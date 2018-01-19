@@ -54,7 +54,7 @@ We assume we are going to use Hyperledger Fabric and Hyperledger Composer for bl
 
 - `$ node app`
 
-- API service would run on port 3001
+- API service would run on port 3001 ( by default ).
 
     - We strongly recommend that you should execute POST /api/adminuser to create admin user before installing application.
 
@@ -68,7 +68,7 @@ We assume we are going to use Hyperledger Fabric and Hyperledger Composer for bl
 
 - `$ node app`
 
-- Application would run on port 3000
+- Application would run on port 3000 ( by default ).
 
 ## Run Application
 
@@ -78,11 +78,12 @@ You can browse http://**.**.**.**:3000/ with your web browser.
 
 - api/ : API
 
-- api/apidoc.html : Online document for API
+- api/public/doc/ : Online document for API
+
+- api/public/doc/swagger.yaml : Swagger-styled online document file
 
 - app/ : Web Application
 
-- doc/swagger.yaml : Swagger-styled online document
 
 - README.md
 
