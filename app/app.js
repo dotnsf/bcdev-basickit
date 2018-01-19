@@ -90,6 +90,7 @@ app.post( '/login', function( req, res ){
     }
   };
   request( options1, ( err1, res1, body1 ) => {
+    res.contentType( 'application/json' );
     if( err1 ){
       console.log( err1 );
       res.redirect( '/login?message=' + err1.message );
@@ -128,6 +129,7 @@ app.get( '/users', function( req, res ){
     json: json1
   };
   request( options1, ( err1, res1, users1 ) => {
+    res.contentType( 'application/json' );
     if( err1 ){
       res.status( 403 );
       res.write( JSON.stringify( err1, 2, null ) );
@@ -157,6 +159,7 @@ app.post( '/user', function( req, res ){
     json: json1
   };
   request( options1, ( err1, res1, user1 ) => {
+    res.contentType( 'application/json' );
     if( err1 ){
       res.status( 403 );
       res.write( JSON.stringify( err1, 2, null ) );
@@ -183,6 +186,7 @@ app.delete( '/user', function( req, res ){
     json: json1
   };
   request( options1, ( err1, res1, user1 ) => {
+    res.contentType( 'application/json' );
     if( err1 ){
       console.log( err1 );
       res.status( 403 );
@@ -214,6 +218,7 @@ app.get( '/items', function( req, res ){
     json: json1
   };
   request( options1, ( err1, res1, items1 ) => {
+    res.contentType( 'application/json' );
     if( err1 ){
       console.log( err1 );
       res.status( 403 );
@@ -243,6 +248,7 @@ app.post( '/item', function( req, res ){
     json: json1
   };
   request( options1, ( err1, res1, item1 ) => {
+    res.contentType( 'application/json' );
     if( err1 ){
       console.log( err1 );
       res.status( 403 );
@@ -270,6 +276,7 @@ app.delete( '/item', function( req, res ){
     json: json1
   };
   request( options1, ( err1, res1, item1 ) => {
+    res.contentType( 'application/json' );
     if( err1 ){
       console.log( err1 );
       res.status( 403 );

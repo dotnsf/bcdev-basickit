@@ -36,7 +36,6 @@ function getUsers(){
     type: 'GET',
     url: '/users',
     success: function( users ){
-      users = JSON.parse( users );
       //console.log( users );
       users.forEach( user => {
         var tr = "<tr><td>" + user.id + "</td><td>********</td><td>" + user.name + "</td><td>" + user.role + "</td>";
@@ -101,7 +100,6 @@ function getItems(){
     type: 'GET',
     url: '/items',
     success: function( items ){
-      items = JSON.parse( items );
       //console.log( items );
       items.forEach( item => {
         var tr = "<tr><td>" + item.id + "</td><td>" + item.user_id + "</td><td>" + item.body + "</td>";

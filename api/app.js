@@ -45,9 +45,9 @@ app.get( '/', function( req, res ){
 var apiRoutes = express.Router();
 
 apiRoutes.post( '/login', function( req, res ){
+  res.contentType( 'application/json' );
   var id = req.body.id;
   var password = req.body.password;
-
   client.getUserForLogin( id, user => {
     if( id && password && user.password == password ){
       var token = jwt.sign( user, app.get( 'superSecret' ), { expiresIn: '25h' } );
@@ -69,6 +69,7 @@ apiRoutes.post( '/login', function( req, res ){
 });
 
 apiRoutes.post( '/adminuser', function( req, res ){
+  res.contentType( 'application/json' );
   var id = 'admin'; //req.body.id;
   var password = req.body.password;
   if( !password ){
@@ -117,6 +118,7 @@ apiRoutes.use( function( req, res, next ){
 });
 
 apiRoutes.post( '/user', function( req, res ){
+  res.contentType( 'application/json' );
   console.log( 'POST /user' );
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
   if( !token ){
@@ -191,6 +193,7 @@ apiRoutes.post( '/user', function( req, res ){
 });
 
 apiRoutes.get( '/users', function( req, res ){
+  res.contentType( 'application/json' );
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
   if( !token ){
     res.write( JSON.stringify( { status: false, message: 'No token provided.' }, 2, null ) );
@@ -239,6 +242,7 @@ apiRoutes.get( '/users', function( req, res ){
 });
 
 apiRoutes.get( '/user', function( req, res ){
+  res.contentType( 'application/json' );
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
   if( !token ){
     res.write( JSON.stringify( { status: false, message: 'No token provided.' }, 2, null ) );
@@ -286,6 +290,7 @@ apiRoutes.get( '/user', function( req, res ){
 });
 
 apiRoutes.delete( '/user', function( req, res ){
+  res.contentType( 'application/json' );
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
   if( !token ){
     res.write( JSON.stringify( { status: false, message: 'No token provided.' }, 2, null ) );
@@ -320,6 +325,7 @@ apiRoutes.delete( '/user', function( req, res ){
 });
 
 apiRoutes.post( '/item', function( req, res ){
+  res.contentType( 'application/json' );
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
   if( !token ){
     res.status( 401 );
@@ -388,6 +394,7 @@ apiRoutes.post( '/item', function( req, res ){
 });
 
 apiRoutes.get( '/items', function( req, res ){
+  res.contentType( 'application/json' );
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
   if( !token ){
     res.write( JSON.stringify( { status: false, message: 'No token provided.' }, 2, null ) );
@@ -436,6 +443,7 @@ apiRoutes.get( '/items', function( req, res ){
 });
 
 apiRoutes.get( '/item', function( req, res ){
+  res.contentType( 'application/json' );
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
   if( !token ){
     res.write( JSON.stringify( { status: false, message: 'No token provided.' }, 2, null ) );
@@ -483,6 +491,7 @@ apiRoutes.get( '/item', function( req, res ){
 });
 
 apiRoutes.delete( '/item', function( req, res ){
+  res.contentType( 'application/json' );
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
   if( !token ){
     res.write( JSON.stringify( { status: false, message: 'No token provided.' }, 2, null ) );
@@ -517,6 +526,7 @@ apiRoutes.delete( '/item', function( req, res ){
 
 
 apiRoutes.get( '/userinfo', function( req, res ){
+  res.contentType( 'application/json' );
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
   if( !token ){
     res.status( 401 );
