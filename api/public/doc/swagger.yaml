@@ -72,10 +72,10 @@ paths:
           in: query
           description: ユーザーID
           required: true
-        - name: body
-          in: body
-          schema:
-            $ref: '#/definitions/TokenRequest'
+        - name: token
+          type: string
+          in: query
+          description: 認証トークン
       responses:
         '200':
           description: 取得成功
@@ -98,7 +98,7 @@ paths:
         - name: body
           in: body
           schema:
-            $ref: '#/definitions/UserRequest'
+            $ref: '#/definitions/UserRequestToken'
       responses:
         '200':
           description: 成功
@@ -117,7 +117,7 @@ paths:
         - name: body
           in: body
           schema:
-            $ref: '#/definitions/UserIdRequest'
+            $ref: '#/definitions/UserIdRequestToken'
       responses:
         '200':
           description: 成功
@@ -136,10 +136,10 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
-          schema:
-            $ref: '#/definitions/UsersRequest'
+        - name: token
+          type: string
+          in: query
+          description: 認証トークン
       responses:
         '200':
           description: 成功
@@ -161,6 +161,10 @@ paths:
           in: query
           description: アイテムID
           required: true
+        - name: token
+          type: string
+          in: query
+          description: 認証トークン
       responses:
         '200':
           description: 取得成功
@@ -181,7 +185,7 @@ paths:
         - name: body
           in: body
           schema:
-            $ref: '#/definitions/ItemRequest'
+            $ref: '#/definitions/ItemRequestToken'
       responses:
         '200':
           description: 成功
@@ -200,7 +204,7 @@ paths:
         - name: body
           in: body
           schema:
-            $ref: '#/definitions/ItemIdRequest'
+            $ref: '#/definitions/ItemIdRequestToken'
       responses:
         '200':
           description: 成功
@@ -219,10 +223,10 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
-          schema:
-            $ref: '#/definitions/ItemsRequest'
+        - name: token
+          type: string
+          in: query
+          description: 認証トークン
       responses:
         '200':
           description: 成功
