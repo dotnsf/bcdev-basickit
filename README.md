@@ -24,6 +24,10 @@ We assume we are going to use Hyperledger Fabric and Hyperledger Composer for bl
 
 ## Requisite
 
+- If you are going to use Hyperledger Fabric and Hyperledger Composer for blockchain, you need to intall them first:
+
+    - http://blog.idcf.jp/entry/hyperledger-fabric
+
 - 2 Node.js servers( they can be in same single system )
 
     - for API and API document
@@ -34,9 +38,15 @@ We assume we are going to use Hyperledger Fabric and Hyperledger Composer for bl
 
     - api/settings.
 
-        - Edit exports.basic_username and exports.basic_password, which are authentication for API document(/apidoc.html).
+        - Edit exports.basic_username and exports.basic_password, which are authentication for API document(/doc/).
 
-        - If you are going to use 'non-blockchain' mode, edit exports.cloudant_username and exports.cloudant_password, which are authentication for IBM Cloudant.
+        - (1) If you are going to use blockchain, you need to create BNC(Business Network Card for PeerAdmin, and deploy BNA(Business Network Archive):
+
+            - `$ cd /fabric; ./createPeerAdmin.sh`
+
+            - `$ composer network deploy -a ./bcdev-basickit-network.bna -A admin -S adminpw -c PeerAdmin@hlfv1 -f admincard`
+
+        - (2) If you are going to use 'non-blockchain' mode, edit exports.cloudant_db, which would be a (fake blockchain)db name in Cloudant. You also need to edit exports.cloudant_username and exports.cloudant_password, which are authentication for IBM Cloudant.
 
     - app/settings.
 
@@ -58,6 +68,8 @@ We assume we are going to use Hyperledger Fabric and Hyperledger Composer for bl
 
     - We strongly recommend that you should execute POST /api/adminuser to create admin user before installing application.
 
+        - `$ curl -XPOST -H 'Content-Type: application/json' 'http://**.**.**.**:3001/api/adminuser' -d '{"password":"XXXXXXXX"}'`
+
 ### Application
 
 - Copy all files in app/ folder
@@ -70,6 +82,10 @@ We assume we are going to use Hyperledger Fabric and Hyperledger Composer for bl
 
 - Application would run on port 3000 ( by default ).
 
+## Run Swagger-style API Document
+
+You can browse http://**.**.**.**:3001/doc/ with your web browser.
+
 ## Run Application
 
 You can browse http://**.**.**.**:3000/ with your web browser.
@@ -78,12 +94,13 @@ You can browse http://**.**.**.**:3000/ with your web browser.
 
 - api/ : API
 
+- api/bcdev-basickit-network.bna : Sample BNA file
+
 - api/public/doc/ : Online document for API
 
 - api/public/doc/swagger.yaml : Swagger-styled online document file
 
 - app/ : Web Application
-
 
 - README.md
 
