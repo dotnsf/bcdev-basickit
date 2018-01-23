@@ -26,6 +26,10 @@ So, please note you need to manually enable 'real-blockchain' mode if you use re
 
 ## Requisite
 
+- If you are going to use Hyperledger Fabric and Hyperledger Composer for blockchain, you need to intall them first:
+
+    - http://blog.idcf.jp/entry/hyperledger-fabric
+
 - 2 Node.js servers( they can be in same single system )
 
     - for API and API document
@@ -82,6 +86,8 @@ So, please note you need to manually enable 'real-blockchain' mode if you use re
 
     - We strongly recommend that you should execute POST /api/adminuser to create admin user before installing application.
 
+        - `$ curl -XPOST -H 'Content-Type: application/json' 'http://**.**.**.**:3001/api/adminuser' -d '{"password":"XXXXXXXX"}'`
+
 ### Application
 
 - Copy all files in app/ folder
@@ -94,6 +100,10 @@ So, please note you need to manually enable 'real-blockchain' mode if you use re
 
 - Application would run on port 3000 ( by default ).
 
+## Run Swagger-style API Document
+
+You can browse http://**.**.**.**:3001/doc/ with your web browser.
+
 ## Run Application
 
 You can browse http://**.**.**.**:3000/ with your web browser.
@@ -102,12 +112,13 @@ You can browse http://**.**.**.**:3000/ with your web browser.
 
 - api/ : API
 
+- api/bcdev-basickit-network.bna : Sample BNA file
+
 - api/public/doc/ : Online document for API
 
 - api/public/doc/swagger.yaml : Swagger-styled online document file
 
 - app/ : Web Application
-
 
 - README.md
 
