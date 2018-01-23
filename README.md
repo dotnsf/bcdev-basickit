@@ -20,7 +20,9 @@ In Blockchain application development, we would develop following three elements
 
         - Online API document would be necessary for application developer. In this basic kit, we would provide swagger-styled online working document.
 
-We assume we are going to use Hyperledger Fabric and Hyperledger Composer for blockchain platform. This Basic Kit is designed to use this blockchain platform environment. But in case you don't have Hyperledger environment (yet), we would provide 'non-blockchain' mode in this API service. In this 'non-blockchain' mode, you can use IBM Cloudant as 'faked' Hyperledger datastore, and API would be compatible/behave like Hyperledger.
+We assume we are going to use Hyperledger Fabric and Hyperledger Composer for blockchain platform. This Basic Kit is designed to be able to use that blockchain platform environment. But we assume you don't have Hyperledger environment (yet), we would provide 'non-blockchain' mode in this API service as default. In this 'non-blockchain' mode, you can use IBM Cloudant as 'faked' Hyperledger datastore, and API would be compatible/behave like Hyperledger.
+
+So, please note you need to manually enable 'real-blockchain' mode if you use real one.
 
 ## Requisite
 
@@ -32,13 +34,35 @@ We assume we are going to use Hyperledger Fabric and Hyperledger Composer for bl
 
 - Edit settings.js under api/ and app/ both.
 
-    - api/settings.
+    - api/settings.js
 
-        - Edit exports.basic_username and exports.basic_password, which are authentication for API document(/apidoc.html).
+        - Edit exports.basic_username and exports.basic_password, which are authentication for API document(/doc/).
 
-        - If you are going to use 'non-blockchain' mode, edit exports.cloudant_username and exports.cloudant_password, which are authentication for IBM Cloudant.
+        - If you are going to use 'non-blockchain' mode(default), edit exports.cloudant_username and exports.cloudant_password, which are authentication for IBM Cloudant.
 
-    - app/settings.
+        - If you are going to use 'real-blockchain' mode, edit exports.cloudant_db as blank(''). This means you are going to use Hyperledger Fabric based blockchain. You also need to compolete following process to deploy Business Network:
+
+            - Install/Setup Hyperledger Fabric and Hyperledger Composer development environment:
+
+                - http://blog.idcf.jp/entry/hyperledger-fabric
+
+            - Create PeerAdmin card
+
+                - `$ ./createPeerAdminCard.sh`
+
+            - Deploy Business Network
+
+                - `$ cd (this directory)/api/`
+
+                - `$ composer runtime install --card PeerAdmin@hlfv1 --businessNetwork bcdev-basickit-network`
+
+                - `$ composer network start --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile bcdev-basickit-network.bna --file PeerAdmin@hlfv1.card`
+
+                - `$ composer card import --file PeerAdmin\@hlfv1.card`
+
+                - `$ composer network ping --card admin@bcdev-basickit-network`
+
+    - app/settings.js
 
         - Edit exports.api_url to point API service.
 
@@ -86,6 +110,21 @@ You can browse http://**.**.**.**:3000/ with your web browser.
 
 
 - README.md
+
+## References
+
+- Hyperledger Fabric でブロックチェーン環境を構築
+
+    - http://blog.idcf.jp/entry/hyperledger-fabric
+
+- Developer Tutorial | Hyperledger Composer
+
+    - https://hyperledger.github.io/composer/tutorials/developer-tutorial.html
+
+- Writing a Node.js application | Hyperledger Composer 
+
+    - https://hyperledger.github.io/composer/applications/node
+
 
 ## Licensing
 

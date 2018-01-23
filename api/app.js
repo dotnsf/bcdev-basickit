@@ -44,6 +44,19 @@ app.get( '/', function( req, res ){
 
 var apiRoutes = express.Router();
 
+apiRoutes.get( '/test', function( req, res ){
+  res.contentType( 'application/json' );
+  var id = req.query.id;
+  client.getUserForLogin( id, user => {
+    res.write( JSON.stringify( { status: true, message: user }, 2, null ) );
+    res.end();
+  }, error => {
+    res.status( 401 );
+    res.write( JSON.stringify( { status: false, message: error }, 2, null ) );
+    res.end();
+  });
+});
+
 apiRoutes.post( '/login', function( req, res ){
   res.contentType( 'application/json' );
   var id = req.body.id;

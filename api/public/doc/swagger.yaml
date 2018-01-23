@@ -7,7 +7,7 @@ host: localhost:3001
 basePath: /
 tags:
   - name: user
-    description: ユーザーに対する処理
+    description: ユーザーデータに対する処理
   - name: item
     description: 商品データに対する処理
 schemes:

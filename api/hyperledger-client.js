@@ -28,11 +28,8 @@ const HyperledgerClient = function() {
       } else {
         console.log('HyperLedgerClient.prepare(): create new business network connection');
         vm.businessNetworkConnection = new BusinessNetworkConnection();
-        const connectionProfile = settings.connectionProfile;
-        const businessNetworkIdentifier = settings.businessNetworkIdentifier;
-        const participantId = settings.participantId;
-        const participantPwd = settings.participantPwd;
-        return vm.businessNetworkConnection.connect(connectionProfile, businessNetworkIdentifier, participantId, participantPwd)
+        const cardName = settings.cardName;
+        return vm.businessNetworkConnection.connect(cardName)
         .then(result => {
           vm.businessNetworkDefinition = result;
           resolved();

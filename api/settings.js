@@ -1,7 +1,4 @@
-exports.connectionProfile = 'hlfv1'; //. 'hlfv1';
-exports.businessNetworkIdentifier = 'bcdev-basickit-network';
-exports.participantId = 'PeerAdmin';
-exports.participantPwd = 'secret';
+exports.cardName = 'admin@bcdev-basickit-network'; //. 'PeerAdmin@hlfv1';
 
 exports.superSecret = 'welovensf';
 
