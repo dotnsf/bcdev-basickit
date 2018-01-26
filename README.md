@@ -50,6 +50,18 @@ So, please note you need to manually enable 'real-blockchain' mode if you use re
 
                 - http://blog.idcf.jp/entry/hyperledger-fabric
 
+            - Install Hyperledger Composer Playground
+
+                - `$ sudo npm install -g composer-cli`
+
+                - `$ sudo npm install -g composer-rest-server`
+
+                - `$ sudo npm install -g generator-hyperledger-composer`
+
+                - `$ sudo npm install -g yo`
+
+                - `$ sudo npm install -g composer-playground`
+
             - Create PeerAdmin card
 
                 - `$ ./createPeerAdminCard.sh`
@@ -62,7 +74,19 @@ So, please note you need to manually enable 'real-blockchain' mode if you use re
 
                 - `$ composer network start --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile bcdev-basickit-network.bna --file PeerAdmin@hlfv1.card`
 
-                - `$ composer card import --file PeerAdmin\@hlfv1.card`
+            - Create Business Network Card for admin@bcdev-basickit-network with Composer Playground
+
+                - `$ composer-playground`
+
+                - Access to http://localhost:8080/login
+
+                - Create Business Network Card for admin@bcdev-basickit-network
+
+            - Import Business Network Card for admin@bcdev-basickit-network
+
+                - `$ composer card import --file admin\@bcdev-basickit-network.card`
+
+            - Ping to Business Network with admin@bcdev-basickit-network (for confirmation)
 
                 - `$ composer network ping --card admin@bcdev-basickit-network`
 
