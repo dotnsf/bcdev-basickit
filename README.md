@@ -112,6 +112,12 @@ So, please note you need to manually enable 'real-blockchain' mode if you use re
 
         - `$ curl -XPOST -H 'Content-Type: application/json' 'http://**.**.**.**:3001/api/adminuser' -d '{"password":"XXXXXXXX"}'`
 
+- If you use Cloud Foundry runtime in IBM Cloud, you would ..
+
+    - Generate admin@bcdev-basickit-network.card as Card file, and..
+
+    - Put it into cards/ subfolder in api folder. 
+
 ### Application
 
 - Copy all files in app/ folder
