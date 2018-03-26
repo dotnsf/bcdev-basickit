@@ -3,7 +3,7 @@ info:
   description: BCDev Basic Kit on Hyperledger Fabric API Document
   version: 0.0.1
   title: BCDev Basic Kit プラットフォーム REST API
-host: localhost:3001
+host: localhost:6001
 basePath: /
 tags:
   - name: user

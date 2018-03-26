@@ -1,12 +1,5 @@
 //. app.js
 
-//. Run following commands to create BNC(Business Network Card) for PeerAdmin
-//. $ cd /fabric
-//. $ ./createPeerAdmin.sh
-
-//. Run following command to deploy business network before running this app.js
-//. $ composer network deploy -a ./bcdev-basickit-network.bna -A admin -S adminpw -c PeerAdmin@hlfv1 -f admincard
-
 var express = require( 'express' ),
     basicAuth = require( 'basic-auth-connect' ),
     cfenv = require( 'cfenv' ),
@@ -26,7 +19,7 @@ const client = new HyperledgerClient();
 
 app.set( 'superSecret', settings.superSecret );
 
-var port = 3001; /*appEnv.port || 3000*/;
+var port = appEnv.port || 3000;
 
 app.use( bodyParser.urlencoded( { extended: true } ) );
 app.use( bodyParser.json() );
