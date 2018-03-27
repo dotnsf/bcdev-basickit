@@ -234,28 +234,6 @@ paths:
           description: 権限エラー
         '500':
           description: 実行エラー
-  /api/query:
-    post:
-      tags:
-        - item
-      summary: 検索
-      description: 検索する
-      produces:
-        - application/json
-      parameters:
-        - name: body
-          in: body
-          schema:
-            $ref: '#/definitions/QueryRequest'
-      responses:
-        '200':
-          description: 成功
-        '401':
-          description: 権限エラー
-        '403':
-          description: 検索失敗
-        '500':
-          description: 実行エラー
 definitions:
   AdminUserRequest:
     type: object
@@ -379,21 +357,6 @@ definitions:
   TokenRequest:
     type: object
     properties:
-      token:
-        type: string
-        description: 認証時に取得したトークン
-  QueryRequest:
-    type: object
-    properties:
-      id:
-        type: string
-        description: ID
-      dateFrom:
-        type: string
-        description: 日時〜
-      dateTo:
-        type: string
-        description: 〜日時
       token:
         type: string
         description: 認証時に取得したトークン

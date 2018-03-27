@@ -1,11 +1,5 @@
 //. hyperledger-client.js
 
-//. Run following commands to create BNC(Business Network Card) for PeerAdmin
-//. $ cd /fabric
-//. $ ./createPeerAdmin.sh
-
-//. Run following command to deploy business network before running this app.js
-//. $ composer network deploy -a ./bcdev-basickit-network.bna -A admin -S adminpw -c PeerAdmin@hlfv1 -f admincard
 var settings = require( './settings' );
 
 const cloudantLib = require( 'cloudant' );
@@ -424,7 +418,7 @@ const HyperledgerClient = function() {
           users0.forEach( function( element ){
             if( element.id && element.password && ( element.role || element.role === 0 ) ){
               delete element.password;
-              users.push( element );
+              users.push( { id: element.id, name: element.name, role: element.role } );
             }
           });
           resolved(users);
@@ -497,8 +491,8 @@ const HyperledgerClient = function() {
           }else{
             var items = [];
             body.rows.forEach( function( element ){
-              if( element.id && element.doc && !element.doc.lat && !element.doc.lng && !element.doc.templeture && !element.doc.item_id && element.doc.body ){
-                items.push( element.doc );
+              if( element.id && element.body ){
+                items.push( { id: element.id, user_id: element.user_id, body: element.body, datetime: element.datetime } );
               }
             });
             resolved(items);
@@ -507,38 +501,6 @@ const HyperledgerClient = function() {
       }
     }, rejected);
   };
-
-/*
-  vm.getMessagesByThreadId = (condition, resolved, rejected) => {
-    vm.prepare(() => {
-      var params = {thread_id: condition.thread_id};
-      var select = 'SELECT me.juge.model.Message WHERE thread_id == _$thread_id ORDER BY created';
-      if( condition.limit ){
-        select += ( ' LIMIT ' + condition.limit );
-        params['limit'] = condition.limit;
-      }
-      if( condition.skip ){
-        select += ( ' SKIP ' + condition.skip );
-        params['skip'] = condition.skip;
-      }
-      var query = vm.businessNetworkConnection.buildQuery( select );
-
-      return vm.businessNetworkConnection.query(query, params)
-      .then(messages => {
-        let serializer = vm.businessNetworkDefinition.getSerializer();
-        var result = [];
-        messages.forEach(message => {
-          result.push(serializer.toJSON(message));
-        });
-        resolved(result);
-      }).catch(error => {
-        console.log('HyperLedgerClient.getMessagesByThreadId(): reject');
-        console.log( error );
-        rejected(error);
-      });
-    }, rejected);
-  };
-*/
 }
 
 module.exports = HyperledgerClient;
