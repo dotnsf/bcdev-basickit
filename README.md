@@ -70,7 +70,7 @@ So, please note you need to manually enable 'real-blockchain' mode if you use re
 
                 - `$ cd (this directory)/api/`
 
-                - `$ composer runtime install --card PeerAdmin@hlfv1 --businessNetwork bcdev-basickit-network`
+                - `$ composer runtime install --card PeerAdmin@hlfv1 --businessNetworkName bcdev-basickit-network`
 
                 - `$ composer network start --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile bcdev-basickit-network.bna --file PeerAdmin@hlfv1.card`
 
